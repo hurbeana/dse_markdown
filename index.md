@@ -285,7 +285,7 @@ coupling is low. [Larry Constantine1968]**
     - Deployability
     - Etc.
 
-## Chapter 2
+## Chapter 2: Software Design
 
 ### Basic Design Approaches
 
@@ -402,7 +402,7 @@ coupling is low. [Larry Constantine1968]**
 * Best Practices
 * Tools
 
-## Chapter 3
+## Chapter 3: Patterns
 
 ### How to apply the patterns
 
@@ -734,7 +734,7 @@ coupling is low. [Larry Constantine1968]**
 * **Egress**
     - Outgoing traffic from a pod
 
-## Chapter 5
+## Chapter 5: Micro Frontends
 
 ### What are Micro Frontends?
 
@@ -748,10 +748,6 @@ coupling is low. [Larry Constantine1968]**
 * A team is cross functional and develops its features end-to-end, from
   database to user interface
 
-### Micro Frontends: Monolith vs. Microservices
-
-Monolithic Frontend Team seemed long time to limit potential of microservices
-
 ### Conway‘s Law and fighting it
 
 * Conway’s law says that the interface structure of a software system will
@@ -762,23 +758,23 @@ Monolithic Frontend Team seemed long time to limit potential of microservices
 
 ### Core Ideas behind Micro Frontends
 
-* Be Technology Agnostic
+* **Be Technology Agnostic**
     - Each team should be able to choose and upgrade their stack without having
       to coordinate with other teams. Custom Elements are a great way to hide
       implementation details while providing a neutral interface to others.
-* Isolate Team Code
+* **Isolate Team Code**
     - Don’t share a runtime, even if all teams use the same framework. Build
       independent apps that are self contained. Don’t rely on shared state or
       global variables.
-* Establish Team Prefixes
+* **Establish Team Prefixes**
     - Agree on naming conventions where isolation is not possible yet.
       Namespace CSS, Events, Local Storage and Cookies to avoid collisions and
       clarify ownership.
-* Favor Native Browser Features over Custom APIs
+* **Favor Native Browser Features over Custom APIs**
     - Use Browser Events for communication instead of building a global PubSub
       system. If you really have to build a cross team API, try keeping it as
       simple as possible.
-* Build a Resilient Site
+* **Build a Resilient Site**
     - Your feature should be useful, even if JavaScript failed or hasn’t
       executed yet. Use Universal Rendering and Progressive Enhancement to
       improve perceived performance.
@@ -820,35 +816,46 @@ to work, Team Checkout has to register the element blue-buy on the page.
 
 Works with JavaScripts disabled!
 
-## Chapter 6
+## Chapter 6: Testing and Tooling
 
-### Testing: Testing in Production
+### Testing in Production
 
-* A/B Testing (split testing)
+* **A/B Testing** (split testing)
     - User Group A uses Service A
     - User Group B uses Service B
     - A comparator service analyzes which service performs better
-* Canary testing
+* **Canary testing**
     - A small group of users is routed to the new service
     - If the tests succeed, all the users are switched over to the new service
 * Both approaches are facilitated by a microservices architecture
 
-### Tools: Helm - the package manager for Kubernetes
+### Helm - the package manager for Kubernetes
 
-* A Chart is a Helm package
+* A **Chart** is a Helm package
     - Contains all of the resource definitions necessary to run an application,
       tool, or service inside a Kubernetes cluster. Think of it like the
       Kubernetes equivalent of a Homebrew formula, an Apt dpkg, or a Yum RPM
       file.
-* A Repository is the place where charts can be collected and shared
+* A **Repository** is the place where charts can be collected and shared
     - Like Perl's CPAN archive or the Fedora Package Database, but for
       Kubernetes packages.
-* A Release is an instance of a chart running in a Kubernetes cluster
+* A **Release** is an instance of a chart running in a Kubernetes cluster
     - One chart can often be installed many times into the same cluster. And
       each time it is installed, a new release is created.
     - Consider a MySQL chart: if you want two databases running in your
       cluster, you can install that chart twice. Each one will have its own
       release, which will in turn have its own release name.
+
+#### Why Helm?
+
+* Manage complexity
+* Easy Updates
+* Simple sharing
+* Defined rollbacks
+* Enables - together with other tools like Terraform - infrastructure as code
+  (IAC) on Kubernetes
+    - Helm focuses more on software deployment
+    - Terraform focuses more on infrastructure deployment
 
 Helm installs charts into Kubernetes, creating a new release for each
 installation.  To find new charts, you can search Helm chart repositories.
@@ -865,18 +872,7 @@ installation.  To find new charts, you can search Helm chart repositories.
         - → a once deployed a microservice is immutable
     - If a microservice grows too big → split it up
 
-### Tools: Why Helm?
-
-* Manage complexity
-* Easy Updates
-* Simple sharing
-* Defined rollbacks
-* Enables - together with other tools like Terraform - infrastructure as code
-  (IAC) on Kubernetes
-    - Helm focuses more on software deployment
-    - Terraform focuses more on infrastructure deployment
-
-## Chapter 7
+## Chapter 7: Architectures
 
 ### Architectural Style Wrap-Up:
 
@@ -888,17 +884,13 @@ MOA, SOA, MSA
 
 ### MSA versus SOA
 
-* ‘1 service owns 1 database’ versus ‘n services access a small number of
-  enterprise databases’
-* Simpler ‘JSON via REST’ versus more complex ‘WS*’ inter-service communication
+* '1 service owns 1 database' versus 'n services access a small number of
+  enterprise databases'
+* Simpler 'JSON via REST' versus more complex `WS*` inter-service communication
 * BASE-like versus ACID-like
-* ‘Reactive fail-fast’ versus ‘wait for timeout’
+* 'Reactive fail-fast' versus 'wait for timeout'
 * Horizontal scalability versus vertical scalability
-* Scalability via functional decomposition* in addition to horizontal
+* Scalability via functional decomposition in addition to horizontal
   scalability
 * Evolution by revolution (recreation) versus modification (refactoring)
     - Immutability versus volatility
-
-### The Art of Scalability
-
-Functional decomposition into microservices
