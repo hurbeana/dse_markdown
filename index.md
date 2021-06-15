@@ -609,7 +609,9 @@ coupling is low. [Larry Constantine1968]**
 
 ## Chapter 4: Service Meshes
 
-### What is a service mesh?
+### What is ...
+
+#### ... a service mesh?
 
 * In software architecture, a service mesh is a
     - dedicated infrastructure layer
@@ -631,7 +633,6 @@ coupling is low. [Larry Constantine1968]**
 * **Data Plane**: The proxies form the data plane
     - Proxies are Layer 7-aware TCP proxies, such as haproxy or NGINX
 * **Control Plane**: Management processes controlling/using data plane
-### What is ...
 
 #### ... linkerd?
 
