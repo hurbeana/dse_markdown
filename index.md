@@ -211,7 +211,6 @@ Microservice -> deployed independetly
       and some unifying purpose or concept served by that class. In another
       sense, it is a measure of the strength of relationship between the
       class's methods and data themselves.
-
 - “The code that changes together, stays together.”
 
 **Constantine‘s Law: A structure is stable if cohesion is high, and
@@ -272,7 +271,6 @@ coupling is low. [Larry Constantine1968]**
 * Testing
 * Deployment
 * Monitoring
-
 
 ### Measuring Migration Success
 
@@ -352,14 +350,14 @@ coupling is low. [Larry Constantine1968]**
     - Explore models in a creative collaboration of domain practitioners and
       software practitioners
     - Speak a ubiquitous language within an explicitly bounded context
-* Domain
+* **Domain**
     - A sphere of knowledge, influence, or activity. The subject area to which
       the user applies a program is the domain of the software.
-* Ubiquitous language
+* **Ubiquitous language**
     - A language structured around the domain model and used by all team
       members within a bounded context to connect all the activities of the
       team with the software.
-* Bounded Context
+* **Bounded Context**
     - A description of a boundary  (typically a subsystem, or the work of a
       particular team) within which a particular model is defined and
       applicable.
@@ -408,104 +406,94 @@ coupling is low. [Larry Constantine1968]**
 
 ### How to apply the patterns
 
-* Decision #1: Monolithic architecture or microservice architecture?
-* Decision #2: How to decompose an application into services?
+* **Decision #1**: Monolithic architecture or microservice architecture?
+* **Decision #2**: How to decompose an application into services?
     - Monolithic architecture pattern
     - Microservice architecture pattern
     - Decompose by business capability
     - Decompose by subdomain
-* Decision #3: How to maintain data consistency and perform queries?
+* **Decision #3**: How to maintain data consistency and perform queries?
     - Database per service pattern vs. Shared database pattern
     - Saga pattern
     - CQRS pattern
 
-### ACID versus BASE: ACID
+### ACID versus BASE
 
-* ACID
-    - Atomicity
-    - Consistency
-    - Isolation
-    - Durability
-* Prevalent design approach in ‘classical’ / low-scale distributed systems
-  using (clustered) relational databases
-    - Key Feature: Two-Phase Commit Distributed Transactions offering ‘strong’
-      consistency
+* **ACID**
+    - **A**tomicity
+    - **C**onsistency
+    - **I**solation
+    - **D**urability
+    - Prevalent design approach in 'classical'/low-scale distributed systems
+      using (clustered) relational databases
+        + Key Feature: Two-Phase Commit Distributed Transactions offering
+          'strong' consistency
+* **BASE**
+    - **B**asically **A**vailable
+    - **S**oft state
+    - **E**ventually consistent
+    - Prevalent design approach in highly scalable distributed systems
+        + Key Feature: Horizontal Scalability supporting nearly unlimited
+          transactions per second (but ‘weak’ consistency)
+        + Used by globally acting service providers such as Social Media
+          Services, Streaming Services etc.
 
 ### CAP Theorem
 
 * CAP
-    - *C*onsistency
-    - *A*vailablility
-    - *P*artition Tolerance
-* CAP: „You cannot have all 3“
+    - **C**onsistency
+    - **A**vailablility
+    - **P**artition Tolerance
+    - *"You cannot have all 3"*
 
-### ACID versus BASE: BASE
+### Decomposition
 
-* BASE
-    - *B*asically *A*vailable
-    - *S*oft state
-    - *E*ventually consistent
+* **Decompose by business capability**
+    - A business capability is a concept from business architecture modeling.
+      It is something that a business does in order to generate value.
+* **Decompose by subdomain**
+    - Define services corresponding to Domain-Driven Design (DDD) subdomains.
+      DDD refers to the application’s problem space - the business as the
+      domain. A domain consists of multiple subdomains. Each subdomain
+      corresponds to a different part of the business.
+* **Service per team**
+    - Each service is owned by a team, which has sole responsibility for making
+      changes. Ideally each team has only one service.
 
-* Prevalent design approach in highly scalable distributed systems
-    - Key Feature: Horizontal Scalability supporting nearly unlimited
-      transactions per second (but ‘weak’ consistency)
-    - Used by globally acting service providers such as Social Media Services,
-      Streaming Services etc.
+### Data management
+* **Database per Service**
+    - Keep each microservice’s persistent data private to that service and
+      accessible only via its API. A service’s transactions only involve its
+      database.
+* **Shared database**
+    - Solution: Use a (single) database that is shared by multiple services.
+      Each service freely accesses data owned by other services using local
+      ACID transactions.
+    - The drawbacks of this pattern are:
+        + **Development time coupling** - a developer working on, for example,
+          the OrderService will need to coordinate schema changes with the
+          developers of other services that access the same tables. This
+          coupling and additional coordination will slow down development.
+        + **Runtime coupling** - because all services access the same database
+          they can potentially interfere with one another. For example, if long
+          running CustomerService transaction holds a lock on the ORDER table
+          then the OrderService will be blocked.
+        + Single database might not satisfy the data storage and access
+          requirements of all services.
+* **Saga**
+    - Implement each business transaction that spans multiple services as a
+      saga.
+    - A saga is a sequence of local transactions. Each local transaction
+      updates the database and publishes a message or event to trigger the next
+      local transaction in the saga.  If a local transaction fails because it
+      violates a business rule then the saga executes a series of compensating
+      transactions that undo the changes that were made by the preceding local
+      transactions.
 
-### Decomposition: Decompose by business capability
+### Transactional Outbox
 
-* A business capability is a concept from business architecture modeling. It is
-  something that a business does in order to generate value.
-
-### Decomposition: Decompose by subdomain
-
-* Define services corresponding to Domain-Driven Design (DDD) subdomains. DDD
-  refers to the application’s problem space - the business as the domain. A
-  domain consists of multiple subdomains. Each subdomain corresponds to a
-  different part of the business.
-
-### Decomposition: Service per team
-
-* Each service is owned by a team, which has sole responsibility for making
-  changes. Ideally each team has only one service.
-
-### Data management: Database per Service
-
-* Keep each microservice’s persistent data private to that service and
-  accessible only via its API. A service’s transactions only involve its
-  database.
-
-### Data management: Shared database
-
-* Solution: Use a (single) database that is shared by multiple services. Each
-  service freely accesses data owned by other services using local ACID
-  transactions.
-* The drawbacks of this pattern are:
-    - *Development time coupling* - a developer working on, for example, the
-      OrderService will need to coordinate schema changes with the developers
-      of other services that access the same tables. This coupling and
-      additional coordination will slow down development.
-    - *Runtime coupling* - because all services access the same database they can
-      potentially interfere with one another. For example, if long running
-      CustomerService transaction holds a lock on the ORDER table then the
-      OrderService will be blocked.
-    - Single database might not satisfy the data storage and access
-      requirements of all services.
-
-### Data management: Saga
-
-Implement each business transaction that spans multiple services as a saga.
-
-* A saga is a sequence of local transactions. Each local transaction updates
-  the database and publishes a message or event to trigger the next local
-  transaction in the saga.  If a local transaction fails because it violates a
-  business rule then the saga executes a series of compensating transactions
-  that undo the changes that were made by the preceding local transactions.
-
-### Transactions: Transactional Outbox
-
-* Problem: A service command typically needs to update the database and send
-  messages/events.
+* **Problem**: A service command typically needs to update the database and
+  send messages/events.
 * For example, a service that participates in a saga needs to atomically update
   the database and send messages/events.
 * Similarly, a service that publishes a domain event must atomically update an
@@ -514,15 +502,12 @@ Implement each business transaction that spans multiple services as a saga.
 * However, it is not viable to use a distributed transaction that spans the
   database and the message broker to atomically update the database and publish
   messages/events.
-
-### Transactions: Transactional Outbox
-
-* *Solution:* A service that uses a relational database inserts messages/events
-  into an outbox table as part of the local transaction. A separate Message
-  Relay process publishes the events inserted into database to a message
-  broker.
-* *Problems of the solution:* The Message Relay might publish a message more than
-  once (hence there is no “exactly once semantics”).
+* **Solution**: A service that uses a relational database inserts
+  messages/events into an outbox table as part of the local transaction. A
+  separate Message Relay process publishes the events inserted into database to
+  a message broker.
+* **Problems of the solution**: The Message Relay might publish a message more
+  than once (hence there is no “exactly once semantics”).
 * It might, for example, crash after publishing a message but before recording
   the fact that it has done so.
 * When it restarts, it will then publish the message again. As a result, a
@@ -531,26 +516,23 @@ Implement each business transaction that spans multiple services as a saga.
   usually need to be idempotent (because a message broker can deliver messages
   more than once) this is typically not a problem.
 
-### Cross cutting concerns: Microservices Chassis
+### Microservices Chassis
 
-* *Problem:* When you start the development of an application you often spend a
-  significant amount of time putting in place the mechanisms to handle
+* **Problem**: When you start the development of an application you often spend
+  a significant amount of time putting in place the mechanisms to handle
   cross-cutting concerns. Examples of cross-cutting concerns include:
-    - *Externalized configuration* - includes credentials and network locations
-      of external services such as databases and message brokers
-    - *Logging* - configuring of a logging framework such as log4j or logback
-    - *Health checks* - a URL that a monitoring service can “ping” to determine
-      the health of the application
-    - *Metrics* - measurements that provide insight into what the application
+    - **Externalized configuration** - includes credentials and network
+      locations of external services such as databases and message brokers
+    - **Logging** - configuring of a logging framework such as log4j or logback
+    - **Health checks** - a URL that a monitoring service can “ping” to
+      determine the health of the application
+    - **Metrics** - measurements that provide insight into what the application
       is doing and how it is performing
-    - *Distributed tracing* - instrument services with code that assigns each
+    - **Distributed tracing** - instrument services with code that assigns each
       external request a unique identifier that is passed between services.
-
-### Cross cutting concerns: Microservices Chassis
-
-* *Problem:* Cross cutting concerns code use is manifold in a service
-* *Solution:* Build your microservices using a microservice chassis framework,
-  which handles cross-cutting concerns.
+* **Problem**: Cross cutting concerns code use is manifold in a service
+* **Solution**: Build your microservices using a microservice chassis
+  framework, which handles cross-cutting concerns.
 * Examples of microservice chassis frameworks
     - Java
         - Spring Boot and Spring Cloud
@@ -559,24 +541,24 @@ Implement each business transaction that spans multiple services as a saga.
         - Gizmo
         - Micro
         - Go kit
+* **Sidecar Pattern**
+    - **Solution:** Co-locate a cohesive set of tasks with the primary
+      application, but place them inside their own process or container,
+      providing a homogeneous interface for platform services across languages.
 
-### Sidecar Pattern
+### Remote Procedure Invocation
 
-* Solution: Co-locate a cohesive set of tasks with the primary application, but
-  place them inside their own process or container, providing a homogeneous
-  interface for platform services across languages.
-
-### Communication style: Remote Procedure Invocation
-
-* *Problem:* How do services in a microservice architecture communicate?
-* *Solution:* Use RPI for inter-service communication. The client uses a
+* **Problem**: How do services in a microservice architecture communicate?
+* **Solution**: Use RPI for inter-service communication. The client uses a
   request/reply-based protocol to make requests to a service.
-There are numerous examples of RPI technologies:
+* There are numerous examples of RPI technologies:
     * REST
     * gRPC
     * Apache Thrift
 
-### Service discovery: Client-side discovery
+### Service discovery
+
+#### Client-side discovery
 
 * Use of a Service Registry
     - Compare e.g. to the Java RMI Registry
@@ -587,7 +569,7 @@ There are numerous examples of RPI technologies:
     - Etcd
     - Netflix Eureka
 
-### Service discovery: Server-side discovery
+#### Server-side discovery
 
 * When making a request to a service, the client makes a request via a router
   (aka load balancer) that runs at a well-known location.
@@ -598,15 +580,12 @@ There are numerous examples of RPI technologies:
 
 ### Reliability: Curcuit Breaker
 
-* *Problem:* How to prevent a network or service failure from cascading to other
-  services?
-* *Solution:* When the number of consecutive failures crosses a threshold, the
-  circuit breaker trips, and for the duration of a timeout period all attempts
-  to invoke the remote service will fail immediately.
+* **Problem**: How to prevent a network or service failure from cascading to
+  other services?
+* **Solution**: When the number of consecutive failures crosses a threshold,
+  the circuit breaker trips, and for the duration of a timeout period all
+  attempts to invoke the remote service will fail immediately.
     - Example: Netflix Hystrix
-
-### Reliability: Curcuit Breaker
-
 * The Curcuit Breaker has different configurable reactions to a client. Instead
   of routing the request to the overloaded resource, the curcuit breaker
   immediately
@@ -620,13 +599,13 @@ There are numerous examples of RPI technologies:
 
 ### Security: Access Token
 
-* *Problem:* How to communicate the identity of the requestor to the services
+* **Problem**: How to communicate the identity of the requestor to the services
   that handle the request?
-* *Solution:* The API Gateway authenticates the request and passes an access
+* **Solution**: The API Gateway authenticates the request and passes an access
   token (e.g. JSON Web Token) that securely identifies the requestor in each
   request to the services. A service can include the access token in requests
   it makes to other services.
-* *Example:* See JSON Web Token for usage examples and supporting libraries.
+* **Example**: See JSON Web Token for usage examples and supporting libraries.
 
 ## Chapter 4
 
