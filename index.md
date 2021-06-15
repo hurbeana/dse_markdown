@@ -607,9 +607,7 @@ coupling is low. [Larry Constantine1968]**
   it makes to other services.
 * **Example**: See JSON Web Token for usage examples and supporting libraries.
 
-## Chapter 4
-
-* Service Meshes: linkerd and istio
+## Chapter 4: Service Meshes
 
 ### What is a service mesh?
 
@@ -617,40 +615,59 @@ coupling is low. [Larry Constantine1968]**
     - dedicated infrastructure layer
     - for facilitating service-to-service communications between microservices
     - often using a sidecar proxy
-* Implementations
+* **Implementations**
     - Consul
     - Istio
     - Kuma
     - Linkerd
     - Maesh
     - Grey Matter
-* Related Patterns
+* **Related Patterns**
     - Proxy
     - Reverse Proxy
     - Interceptor
     - Decorator
     - Sidecar
-* *Data Plane:* The proxies form the data plane
+* **Data Plane**: The proxies form the data plane
     - Proxies are Layer 7-aware TCP proxies, such as haproxy or NGINX
-* *Control Plane:* Management processes controlling/using data plane
+* **Control Plane**: Management processes controlling/using data plane
+### What is ...
 
-### What is linkerd?
+#### ... linkerd?
 
-* “Ultralight, security-first service mesh for Kubernetes”
-* Data Plane
-    - Uses proxies written in Rust: ‘linkerd-proxy’
-        - Proxies act as proxy and reverse-proxy
+* *"Ultralight, security-first service mesh for Kubernetes"*
+* **Data Plane**
+    - Uses proxies written in Rust: `linkerd-proxy`
+        + Proxies act as proxy and reverse-proxy
     - Implement a feature set that focuses on the calls between services, not
-    to the outside world as API gateways or ingress proxies
-* Control Plane
+      to the outside world as API gateways or ingress proxies
+* **Control Plane**
     - Focuses on service discovery, TLS certificate issuing, metrics
-    aggregation, etc.
+      aggregation, etc.
 * Microservice and proxy run in the same pod, proxy as a sidecar
 
-### Why using a service mesh?
+#### ... istio?
+
+* *"Connect, secure, control, and observe services."*
+* **Main features**
+    - Traffic management
+    - Security
+    - Observablity
+    - Extensibility
+
+### linkerd vs. istio
+
+* Linkerd is bound to be used on Kubernetes, istio not
+* Linkerd has a admin dashboard, istio not
+* Istio uses Envoy as proxies, linkerd linkerd-proxy
+    - Envoy is written in C++, linkerd-proxy in Rust
+* Istio has built-in tracing capabilites, linkerd not
+* Istio has more features
+
+### Why use a service mesh?
 
 * Linkerd, like most meshes, has a Layer 7 feature set focused primarily on
-HTTP calls, including HTTP/2 and gRPC.
+  HTTP calls, including HTTP/2 and gRPC.
 * The feature set can be divided into three classes:
     - Reliability features. Request retries, timeouts, canaries (traffic
       splitting/shifting), etc.
@@ -659,13 +676,10 @@ HTTP calls, including HTTP/2 and gRPC.
       service topology maps; etc.
     - Security features. Mutual TLS, access control, etc.
 * Many of these features operate at the request level (hence the “L7 proxy”).
-
-### Why using a service mesh?
-
 * Service meshes tackle specific challanges of highly distributed systems
 * Instead of in-process calls in monoliths causing high coupling and low
-exchangeability microservice-based systems use remote procedure calls between
-loosely-coupled self-deployed services
+  exchangeability microservice-based systems use remote procedure calls between
+  loosely-coupled self-deployed services
 * Different feature layers
 
 |              | Observability                              | Reliability                                          | Security                                          |
@@ -673,24 +687,6 @@ loosely-coupled self-deployed services
 | Service Mesh | Service success rates                      | Request retries                                      | Mutual TLS between all services                   |
 | Platform     | Log aggregation                            | Multiple replicas of dataset                         | Ecryption of data at rest                         |
 | Application  | Instrumentation of internal features usage | Handling of failure when an entire component is down | Ensuring users only have access to their own data |
-
-### What is istio?
-
-* ‘Connect, secure, control, and observe services.’
-* Main features
-    - Traffic management
-    - Security
-    - Observablity
-    - Extensibility
-
-### Differences: linkerd vs. istio
-
-* Istio uses Envoy as proxies, linkerd linkerd-proxy
-    - Envoy is written in C++, linkerd-proxy in Rust
-* Linkerd is bound to be used on Kubernetes, istio not
-* Linkerd has a admin dashboard, istio not
-* Istio has built-in tracing capabilites, linkerd not
-* Istio has more features
 
 ### Summary: Why service meshes?
 
@@ -705,37 +701,37 @@ loosely-coupled self-deployed services
 
 ### Service mesh: Key use cases
 
-* Service discovery
+* **Service discovery**
     - A service mesh provides service-level visibility and telemetry, which
       supports service inventory information and dependency analysis.
-* Operation reliability
+* **Operation reliability**
     - Metrics data from service mesh allows you to see how your services are
       performing. For example, how long did it take it to respond to service
       requests and how much resource it is using. This data is useful to detect
       issues and correct them.
-* Traffic governance
+* **Traffic governance**
     - With service meshes you can configure the mesh network to perform
       fine-grained traffic management policies without going back and changing
       the application. This includes all ingress and egress traffic to and from
       the mesh.
-* Access control
+* **Access control**
     - With service meshes you can assign policies that a service request can be
       granted only based on the location where the request came and can only
       succeed if the requester passes the health check.
-* Secure service-to-service communications
+* **Secure service-to-service communications**
     - You can enforce mutual TLS for service-to-service communications for all
       your service in mesh. Also you can enforce service-level authentication
       using either TLS or JSON web tokens.
 
 ### Ingress vs. Egress
 
-* Ingress
+* **Ingress**
     - Incoming traffic to a pod
     - An API object that manages external access to the services in a cluster,
       typically HTTP.
     - Ingress may provide load balancing, SSL termination and name-based
       virtual hosting.
-* Egress
+* **Egress**
     - Outgoing traffic from a pod
 
 ## Chapter 5
