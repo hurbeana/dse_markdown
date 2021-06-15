@@ -7,7 +7,7 @@
 * A few years ago, some of us were chatting about microservices being an
   interesting idea.
 * The next thing you know it’s become the default architecture for hundreds of
-  companies around the world […], and has everyone running to jump on a
+  companies around the world [...], and has everyone running to jump on a
   bandwagon that they are worried is about to disappear over the horizon.
 
 ## Chapter 1: Microservices
@@ -23,7 +23,7 @@
 * Frozen technologies - programmers shortage
 * Vertical silos - no horizontal scaling
 * Static planning and development
-* Slow time-to-market -every 6 months e.g.
+* Slow time-to-market - every 6 months e.g.
 * Manual testing and deployment - maintenance window
 * No requirements/design documentation existing
 * High risk in any change of the system
@@ -129,11 +129,11 @@ Microservice -> deployed independetly
 
 #### “Competitors”
 
-* Ancient
+* **Ancient**
     - Shared Libraries (DLLs, Shared objects)
     - OSGi Bundles
     - SOA Services
-* Future
+* **Future**
     - Nanoservices?
 
 #### Related Design Principles
@@ -214,8 +214,8 @@ Microservice -> deployed independetly
 
 - “The code that changes together, stays together.”
 
-*Constantine‘s Law: A structure is stable if cohesion is high, and
-coupling is low. [Larry Constantine1968]*
+**Constantine‘s Law: A structure is stable if cohesion is high, and
+coupling is low. [Larry Constantine1968]**
 
 #### Forms of Coupling
 
