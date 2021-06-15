@@ -12,7 +12,9 @@
 
 ## Chapter 1: Microservices
 
-### The Software Monolith
+### Architectures
+
+#### The Software Monolith
 
 * Big and complex - grown over decades
 * Monolithical design - deployed at once
@@ -30,22 +32,30 @@
 
 *"Big ball of mud"*
 
-### Types of Monoliths (MOnolithic Architecture)
+#### Types of Monoliths (MOnolithic Architecture)
 
 1. Single Process Monolith
 2. Modular Monolith
 3. Modular Monolith w/ decomposed Database
 -> *"Deployment Monolith"*
 
-### Microservice Architecture (MSA)
+### Service-Oriented Architecture (SOA)
+
+A service has four properties according to one of many definitions of SOA:
+1. It logically represents a business activity with a specified outcome.
+2. It is self-contained.
+3. It is a black box for its consumers, meaning the consumer does not have to
+   be aware of the service's inner workings.
+4. It may consist of other underlying services.
+
+
+#### Microservice Architecture (MSA)
 
 * Microservice architecture (MSA) is emerging as the new standard for building
   applications.
     - This approach to software design breaks complex applications into small,
       nimble, independent components to speed up time to market, simplify
       maintenance, and enable continuous integration.
-
-### Microservices: Split up the deployment monolith
 
 Microservice -> deployed independetly
 
@@ -92,15 +102,6 @@ Microservice -> deployed independetly
     - focuses on the evolvability advantage that systems using microservices
       expose and does not recommend a use of microservices to increase other
       software qualities like e.g. scalability or resilience
-
-### Service-Oriented Architecture (SOA)
-
-A service has four properties according to one of many definitions of SOA:
-1. It logically represents a business activity with a specified outcome.
-2. It is self-contained.
-3. It is a black box for its consumers, meaning the consumer does not have to
-   be aware of the service's inner workings.
-4. It may consist of other underlying services.
 
 ### About Microservices
 
