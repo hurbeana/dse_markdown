@@ -39,7 +39,7 @@
 3. Modular Monolith w/ decomposed Database
 -> *"Deployment Monolith"*
 
-### Service-Oriented Architecture (SOA)
+#### Service-Oriented Architecture (SOA)
 
 A service has four properties according to one of many definitions of SOA:
 1. It logically represents a business activity with a specified outcome.
