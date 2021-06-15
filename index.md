@@ -102,7 +102,9 @@ A service has four properties according to one of many definitions of SOA:
    be aware of the service's inner workings.
 4. It may consist of other underlying services.
 
-### Microservices Characteristics [Lewis/Fowler14]
+### About Microservices
+
+#### Characteristics [Lewis/Fowler14]
 
 * Componentization via Services
 * Organized around Business Capabilities
@@ -114,7 +116,7 @@ A service has four properties according to one of many definitions of SOA:
 * Design for Failure
 * Evolutionary Design
 
-### Microservices: Key Benefits [Sam Newman15]
+#### Key Benefits [Sam Newman15]
 
 * Technology Heterogeneity
 * Resilience
@@ -124,17 +126,7 @@ A service has four properties according to one of many definitions of SOA:
 * Composability
 * Optimizing for Replaceability
 
-### Why Choosing Microservices? [Sam Newman19]
-
-* Improve Team Autonomy
-* Reduce Time To Market
-* Scale Cost-Effectively for Load
-* Improve Robustness (Chaos Monkey, Simian Army, Chaos Mesh)
-* Scale the Number of Developers
-* Embrace New Technology
-* But for each goal, Sam Newman names alternatives.
-
-### Microservices: “Competitors”
+#### “Competitors”
 
 * Ancient
     - Shared Libraries (DLLs, Shared objects)
@@ -143,7 +135,7 @@ A service has four properties according to one of many definitions of SOA:
 * Future
     - Nanoservices?
 
-### Microservices: Related Design Principles
+#### Related Design Principles
 
 * Coupling/Cohesion
 * Single Responsibility Principle (SRP) [Bob Martin]
@@ -157,6 +149,52 @@ A service has four properties according to one of many definitions of SOA:
 * CQRS
 * UI composition (e.g. Client-side UI composition)
 * HATEOAS (Client/Server Interface decoupling)
+
+#### Why Choose Microservices? [Sam Newman19]
+
+* Improve Team Autonomy
+* Reduce Time To Market
+* Scale Cost-Effectively for Load
+* Improve Robustness (Chaos Monkey, Simian Army, Chaos Mesh)
+* Scale the Number of Developers
+* Embrace New Technology
+* But for each goal, Sam Newman names alternatives.
+
+#### Pattern Languages
+
+* A pattern is a reusable solution to a problem
+* Selected microservices patterns following:
+    - Database per Service Pattern (mandatory for the lab!)
+    - Saga pattern (to compensate for absence of ACID)
+    - Transactional outbox (insert into DB and publish message
+      ‘all-or-nothing’)
+    - Externalized configuration
+    - API gateway (mandatory for the lab!)
+    - Circuit Breaker
+    - Client-side UI composition
+
+#### Risks
+
+* Distributed transactions / consistency / ACID?
+* How to define optimal service boundaries?
+* How to slice the monolithic UI?
+* How to deploy thousands of services?
+* How to do integration testing?
+* How to enforce interface compatibility (compilation error)
+* How to integrate the business experts?
+* How to empower teams for taking service responsiblity?
+* How to deal with a vast number of services in terms of
+    - Management (e.g. API Versioning)
+    - Monitoring / Logging
+    - Elastic scalability
+* How to deal with `n*(n-1)/2` communication channels?
+    - Network load
+    - Latency
+    - Unpredictable network load and latency → indeterminism
+    - Resilience (e.g. against fault propagation)
+* Freedom of choice leads to unprecedented chaos
+    - Dezentralized Governance
+    - Rationales / Rules / Standards
 
 ### Coupling and Cohesion
 
@@ -204,19 +242,6 @@ coupling is low. [Larry Constantine1968]*
     - i.e. business analysis is equally important to technical solution
 * Modularization yields Parallelization → [Amdahl‘s Law]
 
-### Microservices: Pattern Languages
-
-* A pattern is a reusable solution to a problem
-* Selected microservices patterns following:
-    - Database per Service Pattern (mandatory for the lab!)
-    - Saga pattern (to compensate for absence of ACID)
-    - Transactional outbox (insert into DB and publish message
-      ‘all-or-nothing’)
-    - Externalized configuration
-    - API gateway (mandatory for the lab!)
-    - Circuit Breaker
-    - Client-side UI composition
-
 ### Crucial Questions
 
 #### Why not stick to SOA?
@@ -247,28 +272,6 @@ coupling is low. [Larry Constantine1968]*
 * Deployment
 * Monitoring
 
-### Microservices: Risks
-
-* Distributed transactions / consistency / ACID?
-* How to define optimal service boundaries?
-* How to slice the monolithic UI?
-* How to deploy thousands of services?
-* How to do integration testing?
-* How to enforce interface compatibility (compilation error)
-* How to integrate the business experts?
-* How to empower teams for taking service responsiblity?
-* How to deal with a vast number of services in terms of
-    - Management (e.g. API Versioning)
-    - Monitoring / Logging
-    - Elastic scalability
-* How to deal with `n*(n-1)/2` communication channels?
-    - Network load
-    - Latency
-    - Unpredictable network load and latency → indeterminism
-    - Resilience (e.g. against fault propagation)
-* Freedom of choice leads to unprecedented chaos
-    - Dezentralized Governance
-    - Rationales / Rules / Standards
 
 ### Measuring Migration Success
 
