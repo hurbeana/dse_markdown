@@ -29,7 +29,7 @@
 
 * Microservices
 
-#### The Software Monolith
+### The Software Monolith
 
 * Big and complex - grown over decades
 * Monolithical design - deployed at once
@@ -47,14 +47,14 @@
 
 “Big ball of mud”
 
-#### Types of Monoliths (MOnolithic Architecture)
+### Types of Monoliths (MOnolithic Architecture)
 
 1. Single Process Monolith
 2. Modular Monolith
 3. Modular Monolith w/ decomposed Database
 4. “Deployment Monolith”
 
-#### Microservice Architecture (MSA)
+### Microservice Architecture (MSA)
 
 * Microservice architecture (MSA) is emerging as the new standard for building
   applications.
@@ -62,17 +62,17 @@
       nimble, independent components to speed up time to market, simplify
       maintenance, and enable continuous integration.
 
-#### Microservices: Split up the deployment monolith
+### Microservices: Split up the deployment monolith
 
 Microservice (deployed independetly)
 
 “You build it, you run it” (Devops principle)
 
-#### What are Microservices? [Sam Newman15]
+### What are Microservices? [Sam Newman15]
 
 * “Microservices are small, autonomous services that work together.”
 
-#### What are Microservices? [Chris Richardson18]
+### What are Microservices? [Chris Richardson18]
 
 * Microservices - also known as the microservice architecture - is an
 architectural style that structures an application as a collection of
@@ -87,7 +87,7 @@ services that are
   delivery of large, complex applications. It also enables an organization to
   evolve its technology stack.
 
-#### What are Microservices? [Sam Newman19]
+### What are Microservices? [Sam Newman19]
 
 * Microservices are independently deployable services modeled around a business
   domain.
@@ -100,7 +100,7 @@ services that are
   independent deployability is key.
 * Microservices also have the advantage of being technology agnostic.
 
-#### Service-Oriented Architecture (SOA)
+### Service-Oriented Architecture (SOA)
 
 A service has four properties according to one of many definitions of SOA:
 
@@ -110,7 +110,7 @@ A service has four properties according to one of many definitions of SOA:
 be aware of the service's inner workings.
 4. It may consist of other underlying services.
 
-#### Microservices Characteristics [Lewis/Fowler14]
+### Microservices Characteristics [Lewis/Fowler14]
 
 * Componentization via Services
 * Organized around Business Capabilities
@@ -122,7 +122,7 @@ be aware of the service's inner workings.
 * Design for Failure
 * Evolutionary Design
 
-#### Microservices: Key Benefits [Sam Newman15]
+### Microservices: Key Benefits [Sam Newman15]
 
 * Technology Heterogeneity
 * Resilience
@@ -132,7 +132,7 @@ be aware of the service's inner workings.
 * Composability
 * Optimizing for Replaceability
 
-#### Why Choosing Microservices? [Sam Newman19]
+### Why Choosing Microservices? [Sam Newman19]
 
 * Improve Team Autonomy
 * Reduce Time To Market
@@ -142,7 +142,7 @@ be aware of the service's inner workings.
 * Embrace New Technology
 * But for each goal, Sam Newman names alternatives.
 
-#### Microservices [Ralf Westphal14]
+### Microservices [Ralf Westphal14]
 
 * µServices sind Komponenten mit plattformneutralem Kontrakt.
 * Der Zweck von µServices ist, die Wandelbarkeit von Software zu erhöhen.
@@ -152,7 +152,7 @@ be aware of the service's inner workings.
       expose and does not recommend a use of microservices to increase other
       software qualities like e.g. scalability or resilience
 
-#### Microservices: “Competitors”
+### Microservices: “Competitors”
 
 * Ancient
     - Shared Libraries (DLLs, Shared objects)
@@ -161,7 +161,7 @@ be aware of the service's inner workings.
 * Future
     - Nanoservices?
 
-#### Microservices: Related Design Principles
+### Microservices: Related Design Principles
 
 * Coupling/Cohesion
 * Single Responsibility Principle (SRP) [Bob Martin]
@@ -176,7 +176,7 @@ be aware of the service's inner workings.
 * UI composition (e.g. Client-side UI composition)
 * HATEOAS (Client/Server Interface decoupling)
 
-#### Coupling and Cohesion
+### Coupling and Cohesion
 
 * Even if you have nothing else in your design toolbox, merely by addressing
   coupling and cohesion properly you can already achieve a rather decent
@@ -196,7 +196,7 @@ be aware of the service's inner workings.
 *Constantine‘s Law: A structure is stable if cohesion is high, and
 coupling is low. [Larry Constantine1968]*
 
-#### Forms of Coupling
+### Forms of Coupling
 
 * Implementation Coupling
     - A is coupled to B in terms of how B is implemented — when the
@@ -209,7 +209,7 @@ coupling is low. [Larry Constantine1968]*
 * Deployment Coupling
     - E.g. in a monolith: Static Web Content + WAR files + EAR files + Database
 
-#### Key Problem To Solve: Modularization
+### Key Problem To Solve: Modularization
 
 * There is no „silver bullet“ solution to reach reasonable modularization
     - Not object-orientation / information hiding
@@ -222,7 +222,7 @@ coupling is low. [Larry Constantine1968]*
     - i.e. business analysis is equally important to technical solution
 * Modularization yields Parallelization → [Amdahl‘s Law]
 
-#### Microservices: Pattern Languages
+### Microservices: Pattern Languages
 
 * A pattern is a reusable solution to a problem
 * Selected microservices patterns following:
@@ -235,7 +235,7 @@ coupling is low. [Larry Constantine1968]*
     - Circuit Breaker
     - Client-side UI composition
 
-#### Crucial Questions: Why not stick to SOA?
+### Crucial Questions: Why not stick to SOA?
 
 * Where is the Enterprise Service Bus (ESB)?
 * Where is the business process layer/engine (BPM)?
@@ -244,7 +244,7 @@ coupling is low. [Larry Constantine1968]*
 * Where is the tool support?
 * Who takes the warranty?
 
-#### Crucial Questions: How small is micro?
+### Crucial Questions: How small is micro?
 
 * No standardized/generally accepted definition!
 * Some heuristical approaches available
@@ -253,7 +253,7 @@ coupling is low. [Larry Constantine1968]*
     - Two-Pizza Rule (team as big as two pizzas can feed) [Jeff Bezos]
     - 7±2 rule [Georg A. Miller1956]
 
-#### Crucial Questions: How to design for distribution?
+### Crucial Questions: How to design for distribution?
 
 * Database
 * GUI
@@ -263,7 +263,7 @@ coupling is low. [Larry Constantine1968]*
 * Deployment
 * Monitoring
 
-#### Microservices: Risks
+### Microservices: Risks
 
 * Distributed transactions / consistency / ACID?
 * How to define optimal service boundaries?
@@ -274,7 +274,7 @@ coupling is low. [Larry Constantine1968]*
 * How to integrate the business experts?
 * How to empower teams for taking service responsiblity?
 
-#### Microservices: Risks
+### Microservices: Risks
 
 * How to deal with a vast number of services in terms of
     - Management (e.g. API Versioning)
@@ -290,7 +290,7 @@ coupling is low. [Larry Constantine1968]*
     - Dezentralized Governance
     - Rationales / Rules / Standards
 
-#### Measuring Migration Success
+### Measuring Migration Success
 
 * NOT: Number of microservices created
 * BUT
@@ -303,7 +303,9 @@ coupling is low. [Larry Constantine1968]*
     - Deployability
     - Etc.
 
-#### Basic Design Approaches
+### Chapter 2
+
+### Basic Design Approaches
 
 * First Idea of a System
 * Big Design Up Front (BDUF)
@@ -323,7 +325,7 @@ coupling is low. [Larry Constantine1968]*
 * Information Hiding
 * etc.
 
-#### Design Methods: The Big Ones
+### Design Methods: The Big Ones
 
 * Structured Design (SD)
     - Hierachical structured functional modules
@@ -335,7 +337,7 @@ coupling is low. [Larry Constantine1968]*
 * Domain-driven Design (DDD)
     - Modeling around domains (e.g. Bounded Context)
 
-#### Clean Code Developer (CDD) Design Principles
+### Clean Code Developer (CDD) Design Principles
 * Separation of Concerns (SoC)
 * Inversion of Control (IoC)
 * Don‘t repeat yourself (DRY)
@@ -345,7 +347,7 @@ coupling is low. [Larry Constantine1968]*
 * Single Level of Abstraction (SLA)
 * Information Hiding (Coupling/Cohesion)
 
-#### Object-Oriented Design Principles
+### Object-Oriented Design Principles
 * *S*ingle Responsibility Principle (SRP)
 * *O*pen Closed Principle (OCP)
 * *L*iskov Substitution Principle (LSP)
@@ -358,7 +360,7 @@ coupling is low. [Larry Constantine1968]*
 
 *“SOLID”*
 
-#### Domain Driven Design
+### Domain Driven Design
 
 * Domain-Driven Design is an approach to the development of complex software in
   which we:
@@ -384,7 +386,7 @@ coupling is low. [Larry Constantine1968]*
 * Therefore, a Microservice is a Bounded Context, but not vice versa. Not every
   Bounded Context is a Microservice.
 
-#### Procedure Models: First-in-mind models
+### Procedure Models: First-in-mind models
 
 * Waterfall
 * Iterative
@@ -399,7 +401,7 @@ coupling is low. [Larry Constantine1968]*
     - LESS
     - SAFE ...
 
-#### Software Engineering Circle
+### Software Engineering Circle
 
 * Continuous Improvement (Kaizen)
 * ‘Waterfall’ Phases
@@ -418,7 +420,9 @@ coupling is low. [Larry Constantine1968]*
 * Best Practices
 * Tools
 
-#### How to apply the patterns
+## Chapter 3
+
+### How to apply the patterns
 
 * Decision #1: Monolithic architecture or microservice architecture?
 * Decision #2: How to decompose an application into services?
@@ -431,7 +435,7 @@ coupling is low. [Larry Constantine1968]*
     - Saga pattern
     - CQRS pattern
 
-#### ACID versus BASE: ACID
+### ACID versus BASE: ACID
 
 * ACID
     - Atomicity
@@ -443,7 +447,7 @@ coupling is low. [Larry Constantine1968]*
     - Key Feature: Two-Phase Commit Distributed Transactions offering ‘strong’
       consistency
 
-#### CAP Theorem
+### CAP Theorem
 
 * CAP
     - *C*onsistency
@@ -451,7 +455,7 @@ coupling is low. [Larry Constantine1968]*
     - *P*artition Tolerance
 * CAP: „You cannot have all 3“
 
-#### ACID versus BASE: BASE
+### ACID versus BASE: BASE
 
 * BASE
     - *B*asically *A*vailable
@@ -464,30 +468,30 @@ coupling is low. [Larry Constantine1968]*
     - Used by globally acting service providers such as Social Media Services,
       Streaming Services etc.
 
-#### Decomposition: Decompose by business capability
+### Decomposition: Decompose by business capability
 
 * A business capability is a concept from business architecture modeling. It is
   something that a business does in order to generate value.
 
-#### Decomposition: Decompose by subdomain
+### Decomposition: Decompose by subdomain
 
 * Define services corresponding to Domain-Driven Design (DDD) subdomains. DDD
   refers to the application’s problem space - the business as the domain. A
   domain consists of multiple subdomains. Each subdomain corresponds to a
   different part of the business.
 
-#### Decomposition: Service per team
+### Decomposition: Service per team
 
 * Each service is owned by a team, which has sole responsibility for making
   changes. Ideally each team has only one service.
 
-#### Data management: Database per Service
+### Data management: Database per Service
 
 * Keep each microservice’s persistent data private to that service and
   accessible only via its API. A service’s transactions only involve its
   database.
 
-#### Data management: Shared database
+### Data management: Shared database
 
 * Solution: Use a (single) database that is shared by multiple services. Each
   service freely accesses data owned by other services using local ACID
@@ -504,7 +508,7 @@ coupling is low. [Larry Constantine1968]*
     - Single database might not satisfy the data storage and access
       requirements of all services.
 
-#### Data management: Saga
+### Data management: Saga
 
 Implement each business transaction that spans multiple services as a saga.
 
@@ -514,7 +518,7 @@ Implement each business transaction that spans multiple services as a saga.
   business rule then the saga executes a series of compensating transactions
   that undo the changes that were made by the preceding local transactions.
 
-#### Transactions: Transactional Outbox
+### Transactions: Transactional Outbox
 
 * Problem: A service command typically needs to update the database and send
   messages/events.
@@ -527,7 +531,7 @@ Implement each business transaction that spans multiple services as a saga.
   database and the message broker to atomically update the database and publish
   messages/events.
 
-#### Transactions: Transactional Outbox
+### Transactions: Transactional Outbox
 
 * *Solution:* A service that uses a relational database inserts messages/events
   into an outbox table as part of the local transaction. A separate Message
@@ -543,7 +547,7 @@ Implement each business transaction that spans multiple services as a saga.
   usually need to be idempotent (because a message broker can deliver messages
   more than once) this is typically not a problem.
 
-#### Cross cutting concerns: Microservices Chassis
+### Cross cutting concerns: Microservices Chassis
 
 * *Problem:* When you start the development of an application you often spend a
   significant amount of time putting in place the mechanisms to handle
@@ -558,7 +562,7 @@ Implement each business transaction that spans multiple services as a saga.
     - *Distributed tracing* - instrument services with code that assigns each
       external request a unique identifier that is passed between services.
 
-#### Cross cutting concerns: Microservices Chassis
+### Cross cutting concerns: Microservices Chassis
 
 * *Problem:* Cross cutting concerns code use is manifold in a service
 * *Solution:* Build your microservices using a microservice chassis framework,
@@ -572,13 +576,13 @@ Implement each business transaction that spans multiple services as a saga.
         - Micro
         - Go kit
 
-#### Sidecar Pattern
+### Sidecar Pattern
 
 * Solution: Co-locate a cohesive set of tasks with the primary application, but
   place them inside their own process or container, providing a homogeneous
   interface for platform services across languages.
 
-#### Communication style: Remote Procedure Invocation
+### Communication style: Remote Procedure Invocation
 
 * *Problem:* How do services in a microservice architecture communicate?
 * *Solution:* Use RPI for inter-service communication. The client uses a
@@ -588,7 +592,7 @@ There are numerous examples of RPI technologies:
     * gRPC
     * Apache Thrift
 
-#### Service discovery: Client-side discovery
+### Service discovery: Client-side discovery
 
 * Use of a Service Registry
     - Compare e.g. to the Java RMI Registry
@@ -599,7 +603,7 @@ There are numerous examples of RPI technologies:
     - Etcd
     - Netflix Eureka
 
-#### Service discovery: Server-side discovery
+### Service discovery: Server-side discovery
 
 * When making a request to a service, the client makes a request via a router
   (aka load balancer) that runs at a well-known location.
@@ -608,7 +612,7 @@ There are numerous examples of RPI technologies:
 * An AWS Elastic Load Balancer (ELB) is an example of a server-side discovery
   router.
 
-#### Reliability: Curcuit Breaker
+### Reliability: Curcuit Breaker
 
 * *Problem:* How to prevent a network or service failure from cascading to other
   services?
@@ -617,7 +621,7 @@ There are numerous examples of RPI technologies:
   to invoke the remote service will fail immediately.
     - Example: Netflix Hystrix
 
-#### Reliability: Curcuit Breaker
+### Reliability: Curcuit Breaker
 
 * The Curcuit Breaker has different configurable reactions to a client. Instead
   of routing the request to the overloaded resource, the curcuit breaker
@@ -630,7 +634,7 @@ There are numerous examples of RPI technologies:
     - stop cascading failure
     - enable resilience where failure is inevitable
 
-#### Security: Access Token
+### Security: Access Token
 
 * *Problem:* How to communicate the identity of the requestor to the services
   that handle the request?
@@ -644,7 +648,7 @@ There are numerous examples of RPI technologies:
 
 * Service Meshes: linkerd and istio
 
-**What is a service mesh?**
+### What is a service mesh?
 
 * In software architecture, a service mesh is a
     - dedicated infrastructure layer
@@ -667,7 +671,7 @@ There are numerous examples of RPI technologies:
     - Proxies are Layer 7-aware TCP proxies, such as haproxy or NGINX
 * *Control Plane:* Management processes controlling/using data plane
 
-#### What is linkerd?
+### What is linkerd?
 
 * “Ultralight, security-first service mesh for Kubernetes”
 * Data Plane
@@ -680,7 +684,7 @@ There are numerous examples of RPI technologies:
     aggregation, etc.
 * Microservice and proxy run in the same pod, proxy as a sidecar
 
-#### Why using a service mesh?
+### Why using a service mesh?
 
 * Linkerd, like most meshes, has a Layer 7 feature set focused primarily on
 HTTP calls, including HTTP/2 and gRPC.
@@ -693,7 +697,7 @@ HTTP calls, including HTTP/2 and gRPC.
     - Security features. Mutual TLS, access control, etc.
 * Many of these features operate at the request level (hence the “L7 proxy”).
 
-#### Why using a service mesh?
+### Why using a service mesh?
 
 * Service meshes tackle specific challanges of highly distributed systems
 * Instead of in-process calls in monoliths causing high coupling and low
@@ -706,7 +710,7 @@ loosely-coupled self-deployed services
 | Platform     | Log aggregation                            | Multiple replicas of dataset                         | Ecryption of data at rest                         |
 | Application  | Instrumentation of internal features usage | Handling of failure when an entire component is down | Ensuring users only have access to their own data |
 
-#### What is istio?
+### What is istio?
 
 * ‘Connect, secure, control, and observe services.’
 * Main features
@@ -715,7 +719,7 @@ loosely-coupled self-deployed services
     - Observablity
     - Extensibility
 
-#### Differences: linkerd vs. istio
+### Differences: linkerd vs. istio
 
 * Istio uses Envoy as proxies, linkerd linkerd-proxy
     - Envoy is written in C++, linkerd-proxy in Rust
@@ -724,7 +728,7 @@ loosely-coupled self-deployed services
 * Istio has built-in tracing capabilites, linkerd not
 * Istio has more features
 
-#### Summary: Why service meshes?
+### Summary: Why service meshes?
 
 * Automatic load balancing
 * Fine-grained control of traffic behavior with routing rules, retries,
@@ -735,7 +739,7 @@ loosely-coupled self-deployed services
 * Service monitoring with automatic metrics, logs and traces for all traffic
 * Secure service to service communication
 
-#### Service mesh: Key use cases
+### Service mesh: Key use cases
 
 * Service discovery
     - A service mesh provides service-level visibility and telemetry, which
@@ -759,7 +763,7 @@ loosely-coupled self-deployed services
       your service in mesh. Also you can enforce service-level authentication
       using either TLS or JSON web tokens.
 
-#### Ingress vs. Egress
+### Ingress vs. Egress
 
 * Ingress
     - Incoming traffic to a pod
@@ -772,7 +776,7 @@ loosely-coupled self-deployed services
 
 ## Chapter 5
 
-#### What are Micro Frontends?
+### What are Micro Frontends?
 
 * The term Micro Frontends first came up in ThoughtWorks Technology Radar at
   the end of 2016
@@ -784,11 +788,11 @@ loosely-coupled self-deployed services
 * A team is cross functional and develops its features end-to-end, from
   database to user interface
 
-#### Micro Frontends: Monolith vs. Microservices
+### Micro Frontends: Monolith vs. Microservices
 
 Monolithic Frontend Team seemed long time to limit potential of microservices
 
-#### Conway‘s Law and fighting it
+### Conway‘s Law and fighting it
 
 * Conway’s law says that the interface structure of a software system will
   reflect the social structure of the organization that produced it.
@@ -796,7 +800,7 @@ Monolithic Frontend Team seemed long time to limit potential of microservices
   structure to promote your desired architecture. Ideally your technology
   architecture will display isomorphism with your business architecture.
 
-#### Core Ideas behind Micro Frontends
+### Core Ideas behind Micro Frontends
 
 * Be Technology Agnostic
     - Each team should be able to choose and upgrade their stack without having
@@ -819,7 +823,7 @@ Monolithic Frontend Team seemed long time to limit potential of microservices
       executed yet. Use Universal Rendering and Progressive Enhancement to
       improve perceived performance.
 
-#### Custom Elements
+### Custom Elements
 
 * Are the interoperability aspect from the Web Components Spec
 * Are a good primitive for integration in the browser
@@ -832,13 +836,13 @@ Monolithic Frontend Team seemed long time to limit potential of microservices
   without having to know the implementation.
 * They just have to be able to interact with the DOM
 
-#### Client-Side Integration using Custom Elements
+### Client-Side Integration using Custom Elements
 
 Buy button: Team Product includes the button by simply adding `<blue-buy
 sku="t_porsche"></blue-buy>` to the desired position in the markup.  For this
 to work, Team Checkout has to register the element blue-buy on the page.
 
-#### Serverside Rendering using Server Side Includes
+### Serverside Rendering using Server Side Includes
 
 ```html
 <blue-buy sku="t_porsche">
@@ -858,7 +862,7 @@ Works with JavaScripts disabled!
 
 ## Chapter 6
 
-#### Testing: Testing in Production
+### Testing: Testing in Production
 
 * A/B Testing (split testing)
     - User Group A uses Service A
@@ -869,7 +873,7 @@ Works with JavaScripts disabled!
     - If the tests succeed, all the users are switched over to the new service
 * Both approaches are facilitated by a microservices architecture
 
-#### Tools: Helm - the package manager for Kubernetes
+### Tools: Helm - the package manager for Kubernetes
 
 * A Chart is a Helm package
     - Contains all of the resource definitions necessary to run an application,
@@ -889,7 +893,7 @@ Works with JavaScripts disabled!
 Helm installs charts into Kubernetes, creating a new release for each
 installation.  To find new charts, you can search Helm chart repositories.
 
-#### Immutable Infrastructure Principle
+### Immutable Infrastructure Principle
 
 * Immutable infrastructure principle often used with microservices
     - “if you need to add or rewrite some of the code in a deployed
@@ -901,7 +905,7 @@ installation.  To find new charts, you can search Helm chart repositories.
         - → a once deployed a microservice is immutable
     - If a microservice grows too big → split it up
 
-#### Tools: Why Helm?
+### Tools: Why Helm?
 
 * Manage complexity
 * Easy Updates
@@ -914,7 +918,7 @@ installation.  To find new charts, you can search Helm chart repositories.
 
 ## Chapter 7
 
-#### Architectural Style Wrap-Up:
+### Architectural Style Wrap-Up:
 
 MOA, SOA, MSA
 
@@ -922,7 +926,7 @@ MOA, SOA, MSA
 * Service-Oriented Architecture (SOA)
 * Microservices Architecture (MSA)
 
-#### MSA versus SOA
+### MSA versus SOA
 
 * ‘1 service owns 1 database’ versus ‘n services access a small number of
   enterprise databases’
@@ -935,6 +939,6 @@ MOA, SOA, MSA
 * Evolution by revolution (recreation) versus modification (refactoring)
     - Immutability versus volatility
 
-#### The Art of Scalability
+### The Art of Scalability
 
 Functional decomposition into microservices
