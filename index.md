@@ -1,33 +1,16 @@
-## DSE Markdown
-
 * TOC
 {:toc}
 
-## Syllabus
-
-* Motivation and Introduction
-* Chapter 1: Microservices
-* Chapter 2: Software Design Methods / Principles / Procedure Models
-* Chapter 3: Microservice Design Patterns
-* Chapter 4: Service Meshes: linkerd and istio
-* Chapter 5: Microservices and User Interfaces: ‘Micro Frontends’
-* Chapter 6: Microservices Testing and Tools
-* Chapter 7: Architectural Style Wrap-Up: MOA, SOA, MSA
-
 ## Motivation and Introduction
 
-“Microservices”
-
+**Microservices**
 * A few years ago, some of us were chatting about microservices being an
   interesting idea.
-
 * The next thing you know it’s become the default architecture for hundreds of
   companies around the world […], and has everyone running to jump on a
   bandwagon that they are worried is about to disappear over the horizon.
 
-## Chapter 1
-
-* Microservices
+## Chapter 1: Microservices
 
 ### The Software Monolith
 
@@ -45,14 +28,14 @@
 * BUT: Ease of deployment, simple development workflows, simple end-to-end
   testing
 
-“Big ball of mud”
+*"Big ball of mud"*
 
 ### Types of Monoliths (MOnolithic Architecture)
 
 1. Single Process Monolith
 2. Modular Monolith
 3. Modular Monolith w/ decomposed Database
-4. “Deployment Monolith”
+-> *"Deployment Monolith"*
 
 ### Microservice Architecture (MSA)
 
@@ -64,30 +47,31 @@
 
 ### Microservices: Split up the deployment monolith
 
-Microservice (deployed independetly)
+Microservice -> deployed independetly
 
-“You build it, you run it” (Devops principle)
+*"You build it, you run it"* (Devops principle)
 
-### What are Microservices? [Sam Newman15]
+### What are Microservices?
+
+#### [Sam Newman15]
 
 * “Microservices are small, autonomous services that work together.”
 
-### What are Microservices? [Chris Richardson18]
+#### [Chris Richardson18]
 
 * Microservices - also known as the microservice architecture - is an
-architectural style that structures an application as a collection of
-services that are
+  architectural style that structures an application as a collection of
+  services that are
     - Highly maintainable and testable
     - Loosely coupled
     - Independently deployable
     - Organized around business capabilities
     - Owned by a small team
-
 * The microservice architecture enables the rapid, frequent and reliable
   delivery of large, complex applications. It also enables an organization to
   evolve its technology stack.
 
-### What are Microservices? [Sam Newman19]
+#### [Sam Newman19]
 
 * Microservices are independently deployable services modeled around a business
   domain.
@@ -95,19 +79,27 @@ services that are
   offer many options for solving the problems you may face.
 * It follows that a microservice architecture is based on multiple
   collaborating microservices.
-* They are a type of service-oriented architecture (SOA*), albeit one that is
+* They are a type of service-oriented architecture (SOA), albeit one that is
   opinionated about how service boundaries should be drawn, and that
   independent deployability is key.
 * Microservices also have the advantage of being technology agnostic.
 
+#### [Ralf Westphal14]
+
+* µServices sind Komponenten mit plattformneutralem Kontrakt.
+* Der Zweck von µServices ist, die Wandelbarkeit von Software zu erhöhen.
+    - “That´s it. Nicht mehr, nicht weniger. Vor allem: nur dies.”
+    - focuses on the evolvability advantage that systems using microservices
+      expose and does not recommend a use of microservices to increase other
+      software qualities like e.g. scalability or resilience
+
 ### Service-Oriented Architecture (SOA)
 
 A service has four properties according to one of many definitions of SOA:
-
 1. It logically represents a business activity with a specified outcome.
 2. It is self-contained.
 3. It is a black box for its consumers, meaning the consumer does not have to
-be aware of the service's inner workings.
+   be aware of the service's inner workings.
 4. It may consist of other underlying services.
 
 ### Microservices Characteristics [Lewis/Fowler14]
@@ -141,16 +133,6 @@ be aware of the service's inner workings.
 * Scale the Number of Developers
 * Embrace New Technology
 * But for each goal, Sam Newman names alternatives.
-
-### Microservices [Ralf Westphal14]
-
-* µServices sind Komponenten mit plattformneutralem Kontrakt.
-* Der Zweck von µServices ist, die Wandelbarkeit von Software zu erhöhen.
-    - “That´s it. Nicht mehr, nicht weniger. Vor allem: nur dies.”
-* Ralf Westphal
-    - focuses on the evolvability advantage that systems using microservices
-      expose and does not recommend a use of microservices to increase other
-      software qualities like e.g. scalability or resilience
 
 ### Microservices: “Competitors”
 
@@ -196,17 +178,17 @@ be aware of the service's inner workings.
 *Constantine‘s Law: A structure is stable if cohesion is high, and
 coupling is low. [Larry Constantine1968]*
 
-### Forms of Coupling
+#### Forms of Coupling
 
-* Implementation Coupling
+* **Implementation Coupling**
     - A is coupled to B in terms of how B is implemented — when the
       implementation of B changes, A also changes.
-* Domain Coupling
+* **Domain Coupling**
     - E.g. between the Order Service and Recommendation Service
-* Temporal Coupling
+* **Temporal Coupling**
     - Synchronous RPC calls (vs. asynchronous message-oriented communication)
     - 2 Phase Commit (2PC) Transaction in a RDBMS
-* Deployment Coupling
+* **Deployment Coupling**
     - E.g. in a monolith: Static Web Content + WAR files + EAR files + Database
 
 ### Key Problem To Solve: Modularization
@@ -235,16 +217,18 @@ coupling is low. [Larry Constantine1968]*
     - Circuit Breaker
     - Client-side UI composition
 
-### Crucial Questions: Why not stick to SOA?
+### Crucial Questions
+
+#### Why not stick to SOA?
 
 * Where is the Enterprise Service Bus (ESB)?
 * Where is the business process layer/engine (BPM)?
 * Where is the rule engine?
-* Where are the WS* standards?
+* Where are the `WS*` standards?
 * Where is the tool support?
 * Who takes the warranty?
 
-### Crucial Questions: How small is micro?
+#### How small is micro?
 
 * No standardized/generally accepted definition!
 * Some heuristical approaches available
@@ -253,7 +237,7 @@ coupling is low. [Larry Constantine1968]*
     - Two-Pizza Rule (team as big as two pizzas can feed) [Jeff Bezos]
     - 7±2 rule [Georg A. Miller1956]
 
-### Crucial Questions: How to design for distribution?
+#### How to design for distribution?
 
 * Database
 * GUI
@@ -273,19 +257,15 @@ coupling is low. [Larry Constantine1968]*
 * How to enforce interface compatibility (compilation error)
 * How to integrate the business experts?
 * How to empower teams for taking service responsiblity?
-
-### Microservices: Risks
-
 * How to deal with a vast number of services in terms of
     - Management (e.g. API Versioning)
     - Monitoring / Logging
     - Elastic scalability
-* How to deal with n*(n-1)/2 communication channels?
+* How to deal with `n*(n-1)/2` communication channels?
     - Network load
     - Latency
     - Unpredictable network load and latency → indeterminism
     - Resilience (e.g. against fault propagation)
-
 * Freedom of choice leads to unprecedented chaos
     - Dezentralized Governance
     - Rationales / Rules / Standards
@@ -705,7 +685,7 @@ exchangeability microservice-based systems use remote procedure calls between
 loosely-coupled self-deployed services
 * Different feature layers
 |              | Observability                              | Reliability                                          | Security                                          |
-|--------------|--------------------------------------------|------------------------------------------------------|---------------------------------------------------|
+|:-------------|:-------------------------------------------|:-----------------------------------------------------|:--------------------------------------------------|
 | Service Mesh | Service success rates                      | Request retries                                      | Mutual TLS between all services                   |
 | Platform     | Log aggregation                            | Multiple replicas of dataset                         | Ecryption of data at rest                         |
 | Application  | Instrumentation of internal features usage | Handling of failure when an entire component is down | Ensuring users only have access to their own data |
