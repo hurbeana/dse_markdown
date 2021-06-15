@@ -578,7 +578,7 @@ coupling is low. [Larry Constantine1968]**
 * An AWS Elastic Load Balancer (ELB) is an example of a server-side discovery
   router.
 
-### Reliability: Curcuit Breaker
+### Circuit Breaker
 
 * **Problem**: How to prevent a network or service failure from cascading to
   other services?
@@ -597,7 +597,7 @@ coupling is low. [Larry Constantine1968]**
     - stop cascading failure
     - enable resilience where failure is inevitable
 
-### Security: Access Token
+### Access Token
 
 * **Problem**: How to communicate the identity of the requestor to the services
   that handle the request?
