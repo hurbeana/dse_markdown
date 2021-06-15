@@ -1,3 +1,6 @@
+* TOC
+{:toc}
+
 # Syllabus
 
 * Motivation and Introduction
