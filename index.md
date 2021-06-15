@@ -684,6 +684,7 @@ HTTP calls, including HTTP/2 and gRPC.
 exchangeability microservice-based systems use remote procedure calls between
 loosely-coupled self-deployed services
 * Different feature layers
+
 |              | Observability                              | Reliability                                          | Security                                          |
 |:-------------|:-------------------------------------------|:-----------------------------------------------------|:--------------------------------------------------|
 | Service Mesh | Service success rates                      | Request retries                                      | Mutual TLS between all services                   |
